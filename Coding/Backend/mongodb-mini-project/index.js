@@ -8,7 +8,13 @@ const PORT = process.env.PORT || 8001;
 
 app.use(express.json());
 
-dbconnect();
+dbconnect()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Express server listening on ${PORT}`);
+    });
+  })
+  .catch((err) => console.log(`DB Connection Error: ${err}`));
 
 app.get("/", (req, res) => {
   res.send("Welcome to home page !");
@@ -33,6 +39,7 @@ app.get("/api/admissionform", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Express server listening on ${PORT}`);
+app.get("/user/:name/id/:id", async (req, res) => {
+  const { name, id } = req.params;
+  res.send(`Hello ${name}\nID ${id}`);
 });
