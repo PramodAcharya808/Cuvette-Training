@@ -1,7 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import dbconnect from "./db/database.js";
-import router from "./routes/employee.routes.js";
+import emplpyeeRouter from "./routes/employee.routes.js";
 
 const app = express();
 const PORT = 8000;
@@ -23,4 +23,4 @@ dbconnect()
 
 const apiVersion = "/api/v1";
 
-app.use(`${apiVersion}/employee`, router);
+app.use(`${apiVersion}/employee`, emplpyeeRouter);
