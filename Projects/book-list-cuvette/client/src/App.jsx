@@ -18,8 +18,9 @@ const App = () => {
         "http://localhost:8000/api/v1/books/allbooks"
       );
       setBooks(response.data);
-      console.log(books);
+      // console.log(response.data);
       setFilteredBooks(response.data);
+      console.log(filteredBooks);
     } catch (error) {
       console.error("Error fetching books:", error);
     }
@@ -54,7 +55,7 @@ const App = () => {
       <h1 className="banner">Book Manager</h1>
       <AddBook addBook={addBook}></AddBook>
       <FilterBooks filterBooksByTitle={filterBooksByTitle}></FilterBooks>
-      <BookList books={books}></BookList>
+      <BookList books={filteredBooks}></BookList>
     </div>
   );
 };
